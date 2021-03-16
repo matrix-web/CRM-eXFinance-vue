@@ -1,11 +1,14 @@
 .DS_Store
 node_modules
 /dist
-
+/public
+firebase.json
+.firebase
 
 # local env files
 .env.local
 .env.*.local
+.firebaserc
 
 # Log files
 npm-debug.log*

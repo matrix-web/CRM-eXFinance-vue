@@ -1,32 +1,52 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" ref="app" class="app left right">
+    <component :is="layout">
+      <router-view/>
+    </component>
   </div>
 </template>
 
+<script>
+import EmptyLayout from '@/layouts/EmptyLayout'
+import MainLayout from '@/layouts/MainLayout'
+import NotFoundLayout from '@/layouts/NotFoundLayout'
+
+export default {
+  name: 'app',
+  data: () => ({
+    app: null,
+    overlayActive: false,
+    isOverlay: false
+  }),
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || 'empty' || 'not-found') + '-layout'
+    }
+  },
+  components: {
+    EmptyLayout,
+    MainLayout,
+    NotFoundLayout
+  }
+}
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "./assets/css/main.css";
+
+.app {
+  height: 100%;
 }
 
-#nav {
-  padding: 30px;
+.app.right {
+  touch-action: pan-right;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.app.left {
+  touch-action: pan-left;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.app.left.right {
+  touch-action: pan-y;
 }
 </style>
