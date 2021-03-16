@@ -1426,6 +1426,7 @@ sidebar__nav-link span {
 
 .auth__form {
   flex: 410px 0 1;
+  width: 100%;
 }
 
 .register--position-lines::before {
@@ -1454,7 +1455,7 @@ sidebar__nav-link span {
   content: '';
   position: absolute;
   bottom: 15px;
-  left: 15%;
+  left: 10%;
   display: block;
   width: 55px;
   height: 2px;
@@ -1468,7 +1469,7 @@ sidebar__nav-link span {
   width: 55px;
   height: 2px;
   background-color: #e5eaf4;
-  right: 15%;
+  right: 10%;
   bottom: 15px;
 }
 
